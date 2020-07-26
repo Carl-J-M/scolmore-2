@@ -25,7 +25,7 @@
                                 <button type="submit" name="delete" formmethod="POST" class="btn btn-danger">Delete</button>
                                 {{ csrf_field() }}
                             </form>
-                            
+                            <td>{{$user->name}}</td>
                         </td>
                     </tr>
 
