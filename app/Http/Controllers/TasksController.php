@@ -20,13 +20,16 @@ class TasksController extends Controller
     }
 
     public function create(Request $request)
-    {
-    	$task = new Task();
-    	$task->description = $request->description;
-    	$task->user_id = Auth::id();
-    	$task->save();
-    	return redirect('/');
-    }
+        {
+            $this->validate($request, [
+                'description' => 'required|min:5'
+            ]);
+        	$task = new Task();
+        	$task->description = $request->description;
+        	$task->user_id = Auth::id();
+        	$task->save();
+        	return redirect('/');
+        }
 
     public function edit(Task $task)
     {
