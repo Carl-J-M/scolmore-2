@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::middleware(['auth'])->group(function () {
 
   Route::get('/', 'TasksController@index');
   Route::get('/task','TasksController@add');
@@ -23,3 +24,4 @@ Auth::routes();
 
   Route::get('/task/{task}','TasksController@edit');
   Route::post('/task/{task}','TasksController@update');
+});
